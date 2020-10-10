@@ -1,7 +1,6 @@
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
-import subprocess
 from dash.dependencies import Output, State, Input
 
 import time
@@ -35,16 +34,17 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 
 app.layout = html.Div(style={'width':'70vw', 'margin':'auto'}, children=[
-    html.H1("Message to Marco"),
+    html.H1("Message to Pi"),
     dcc.Input(
             id="Input",
             type="text",
             placeholder="message"
         ),
     html.Button('Send message', id='submit', n_clicks=0, style={'background-color':'red', 'color':'orange'}),
+    html.Br(),
     html.Div(children=[], id='message'),
+    html.Br(),
     html.Img(id='image', src= None, style={'border':'3px solid black', 'box-shadow': '2px 2px black', 'width':252}),
-    #'border':'1px solid black', 'box-shadow': '2px 2px black'
 ])
 
 
@@ -58,9 +58,6 @@ def print_on_screen(message):
 
 
     draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
-    #draw.rectangle((0,0,83,47), outline=0, fill=255)
-
-    # Load default font.
     font = ImageFont.load_default()
 
     row = 20
@@ -79,12 +76,6 @@ def print_on_screen(message):
 
 
         image = image.convert('1')
-
-
-        #disp.image(image)
-        #disp.display()
-
-        #time.sleep(5.0)
         disp.clear()
         disp.display()
 
@@ -109,17 +100,11 @@ def display_message(n_clicks, image):
     disp.image(image)
     disp.display()
 
-    time.sleep(30.0)
+    time.sleep(5.0)
     disp.clear()
     disp.display()
 
-    ''' file_path_pi = 'led_test.py'
-    ip = '192.168.0.200'
-    #subprocess.run("ssh -i ~/.ssh/id_rsa_pi pi@{} python {}".format(ip, file_path_pi), shell=True, check=True)
-    subprocess.run("python {}".format(file_path_pi), shell=True, check=True)
-    '''
-
-    message = ['You are successfully connected!']
+    message = ['Your message was sent!']
     return message
 
 
