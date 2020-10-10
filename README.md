@@ -1,5 +1,7 @@
-# pi-message-webapp
-Simple Dash app to interact with Adafruit Nokia LCD screen through Raspberry Pi
+
+<h1> pi-message-webapp </h1> 
+
+<h2>Simple Dash app to interact with Adafruit Nokia LCD screen through Raspberry Pi</h2>
 
 
 <p float="left">
